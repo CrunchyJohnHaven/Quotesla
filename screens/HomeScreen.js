@@ -12,24 +12,37 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 
+import Images, { Logo } from '../assets/images';
+// import { RoundedTextInput } from '../components/theme';
+
+
 export default class HomeScreen extends React.Component {
+
   static navigationOptions = {
     header: null,
   };
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+      errors: {}
+    };
+  }
 
   render() {
+    const { navigation } = this.props;
+    const { errors } = this.state;
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
+            <Image style={{ width: '80%' }} source={Logo.DARK} resizeMode="contain" />
+          </View>
+          <View flex={1} style={styles.body}>
+          <View style={{ width: '100%' }}>
+           
+            </View>
           </View>
 
           <View style={styles.getStartedContainer}>
@@ -186,3 +199,13 @@ const styles = StyleSheet.create({
     color: '#2e78b7',
   },
 });
+
+
+// <Image
+//               source={
+//                 __DEV__
+//                   ? require('../assets/images/robot-dev.png')
+//                   : require('../assets/images/robot-prod.png')
+//               }
+//               style={styles.welcomeImage}
+//             />
